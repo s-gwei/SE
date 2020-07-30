@@ -1,4 +1,4 @@
-package com.sun.connection.linked;
+package com.sun.collection.linked;
 
 
 //单链表实现栈

@@ -1,4 +1,4 @@
-package com.sun.connection;
+package com.sun.collection;
 
 /*
  * ArrayList详解

@@ -1,4 +1,4 @@
-package com.sun.connection;
+package com.sun.collection;
 
 import java.util.ArrayList;
 import java.util.HashSet;

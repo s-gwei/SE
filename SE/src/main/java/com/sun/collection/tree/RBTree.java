@@ -1,4 +1,4 @@
-package com.sun.connection.tree;
+package com.sun.collection.tree;
 
 public class RBTree <T extends Comparable<T>>{
 	

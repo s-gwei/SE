@@ -1,4 +1,4 @@
-package com.sun.connection.linked;
+package com.sun.collection.linked;
 
 import javax.security.auth.callback.LanguageCallback;
 

@@ -1,4 +1,4 @@
-package com.sun.connection.tree;
+package com.sun.collection.tree;
 /*
  * 二叉树的三种遍历方式
  */
