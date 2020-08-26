@@ -114,12 +114,17 @@ public class RBTree <T extends Comparable<T>>{
 //	       insertFixUp(node);
 	   }
 
-	   /* 
-	    * 新建结点(key)，并将其插入到红黑树中
-	    *
-	    * 参数说明：
-	    *     key 插入结点的键值
-	    */
+	  /* 1. 如果插入的元素的父节点和叔叔节点都为红色。
+	   处理方法：直接把叔叔节点和父节点染为黑色，爷爷节点要不是根节点的话染为红色即可
+	   2. 如果父节点为红色，叔叔节点为空或者为黑色，并且父节点是爷爷节点是又子树，并且当前节点是父亲节点的左子树。 
+	   处理方法：先把父节点右旋转一下， 然后把父节点染为黑色，爷爷节点染为红色，然后左旋转一下.
+	   3. 如果父节点为红色， 叔叔节点为空或者黑色，并且父节点是爷爷节点的右子树，并且当前节点是父节点的右子树 
+	   处理方法：把父节点染为黑色，爷爷节点染为红色，然后左旋转一下.
+	   ４.　如果父节点为红色，叔叔节点为空或者黑色，并且父节点是爷爷节点的左子树，并且当前节点是父节点的右子树
+	   处理方法： 先把父节点左旋转一下， 然后把父节点染为黑色，爷爷节点染为红色，然后右旋转一下.
+	   5. 如果父节点为红色，叔叔记得为空或者黑色，并且父节点是爷爷节点的左子树，并且当前节点是父节点的左子树
+	   处理方法：把父节点染为黑色，爷爷节点染为红色，然后右旋转一下.
+	   */
 	   public void insert(T key) {
 	       RBTNode<T> node=new RBTNode<T>(key,BLACK,null,null,null);
 
@@ -128,181 +133,5 @@ public class RBTree <T extends Comparable<T>>{
 	           insert(node);
 	   }
 
-//	   
-//	   /*
-//	    * 红黑树插入修正函数
-//	    *
-//	    * 在向红黑树中插入节点之后(失去平衡)，再调用该函数；
-//	    * 目的是将它重新塑造成一颗红黑树。
-//	    *
-//	    * 参数说明：
-//	    *     node 插入的结点        // 对应《算法导论》中的z
-//	    */
-//	   private void insertFixUp(RBTNode<T> node) {
-//	       RBTNode<T> parent, gparent;
-//
-//	       // 若“父节点存在，并且父节点的颜色是红色”
-//	       while (((parent = parentOf(node))!=null) && isRed(parent)) {
-//	           gparent = parentOf(parent);
-//
-//	           //若“父节点”是“祖父节点的左孩子”
-//	           if (parent == gparent.left) {
-//	               // Case 1条件：叔叔节点是红色
-//	               RBTNode<T> uncle = gparent.right;
-//	               if ((uncle!=null) && isRed(uncle)) {
-//	                   setBlack(uncle);
-//	                   setBlack(parent);
-//	                   setRed(gparent);
-//	                   node = gparent;
-//	                   continue;
-//	               }
-//
-//	               // Case 2条件：叔叔是黑色，且当前节点是右孩子
-//	               if (parent.right == node) {
-//	                   RBTNode<T> tmp;
-//	                   leftRotate(parent);
-//	                   tmp = parent;
-//	                   parent = node;
-//	                   node = tmp;
-//	               }
-//
-//	               // Case 3条件：叔叔是黑色，且当前节点是左孩子。
-//	               setBlack(parent);
-//	               setRed(gparent);
-//	               rightRotate(gparent);
-//	           } else {    //若“z的父节点”是“z的祖父节点的右孩子”
-//	               // Case 1条件：叔叔节点是红色
-//	               RBTNode<T> uncle = gparent.left;
-//	               if ((uncle!=null) && isRed(uncle)) {
-//	                   setBlack(uncle);
-//	                   setBlack(parent);
-//	                   setRed(gparent);
-//	                   node = gparent;
-//	                   continue;
-//	               }
-//
-//	               // Case 2条件：叔叔是黑色，且当前节点是左孩子
-//	               if (parent.left == node) {
-//	                   RBTNode<T> tmp;
-//	                   rightRotate(parent);
-//	                   tmp = parent;
-//	                   parent = node;
-//	                   node = tmp;
-//	               }
-//
-//	               // Case 3条件：叔叔是黑色，且当前节点是右孩子。
-//	               setBlack(parent);
-//	               setRed(gparent);
-//	               leftRotate(gparent);
-//	           }
-//	       }
-//
-//	       // 将根节点设为黑色
-//	       setBlack(this.mRoot);
-//	   }
-//	   /* 
-//	    * 删除结点(node)，并返回被删除的结点
-//	    *
-//	    * 参数说明：
-//	    *     node 删除的结点
-//	    */
-//	   private void remove(RBTNode<T> node) {
-//	       RBTNode<T> child, parent;
-//	       boolean color;
-//
-//	       // 被删除节点的"左右孩子都不为空"的情况。
-//	       if ( (node.left!=null) && (node.right!=null) ) {
-//	           // 被删节点的后继节点。(称为"取代节点")
-//	           // 用它来取代"被删节点"的位置，然后再将"被删节点"去掉。
-//	           RBTNode<T> replace = node;
-//
-//	           // 获取后继节点
-//	           replace = replace.right;
-//	           while (replace.left != null)
-//	               replace = replace.left;
-//
-//	           // "node节点"不是根节点(只有根节点不存在父节点)
-//	           if (parentOf(node)!=null) {
-//	               if (parentOf(node).left == node)
-//	                   parentOf(node).left = replace;
-//	               else
-//	                   parentOf(node).right = replace;
-//	           } else {
-//	               // "node节点"是根节点，更新根节点。
-//	               this.mRoot = replace;
-//	           }
-//
-//	           // child是"取代节点"的右孩子，也是需要"调整的节点"。
-//	           // "取代节点"肯定不存在左孩子！因为它是一个后继节点。
-//	           child = replace.right;
-//	           parent = parentOf(replace);
-//	           // 保存"取代节点"的颜色
-//	           color = colorOf(replace);
-//
-//	           // "被删除节点"是"它的后继节点的父节点"
-//	           if (parent == node) {
-//	               parent = replace;
-//	           } else {
-//	               // child不为空
-//	               if (child!=null)
-//	                   setParent(child, parent);
-//	               parent.left = child;
-//
-//	               replace.right = node.right;
-//	               setParent(node.right, replace);
-//	           }
-//
-//	           replace.parent = node.parent;
-//	           replace.color = node.color;
-//	           replace.left = node.left;
-//	           node.left.parent = replace;
-//
-//	           if (color == BLACK)
-//	               removeFixUp(child, parent);
-//
-//	           node = null;
-//	           return ;
-//	       }
-//
-//	       if (node.left !=null) {
-//	           child = node.left;
-//	       } else {
-//	           child = node.right;
-//	       }
-//
-//	       parent = node.parent;
-//	       // 保存"取代节点"的颜色
-//	       color = node.color;
-//
-//	       if (child!=null)
-//	           child.parent = parent;
-//
-//	       // "node节点"不是根节点
-//	       if (parent!=null) {
-//	           if (parent.left == node)
-//	               parent.left = child;
-//	           else
-//	               parent.right = child;
-//	       } else {
-//	           this.mRoot = child;
-//	       }
-//
-//	       if (color == BLACK)
-//	           removeFixUp(child, parent);
-//	       node = null;
-//	   }
-//
-//	   /* 
-//	    * 删除结点(z)，并返回被删除的结点
-//	    *
-//	    * 参数说明：
-//	    *     tree 红黑树的根结点
-//	    *     z 删除的结点
-//	    */
-//	   public void remove(T key) {
-//	       RBTNode<T> node; 
-//
-//	       if ((node = search(mRoot, key)) != null)
-//	           remove(node);
-//	   }
+
 }

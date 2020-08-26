@@ -16,7 +16,7 @@ public class BinarySearchTreeNode {
 	//先根遍历
 	public void preOrder(BinarySearchTree node){
 		if(node != null){
-			System.out.println(node.obj);
+			System.out.print(node.obj.toString()+" ");
 			preOrder(node.leftNode);
 			preOrder(node.rightNode);
 		}
@@ -26,7 +26,7 @@ public class BinarySearchTreeNode {
 		if(node != null){
 			afterOrder(node.leftNode);
 			afterOrder(node.rightNode);
-			System.out.println(node);
+			System.out.print(node.obj.toString()+" ");
 		}
 	}
 	//中根遍历（得到的数据就是排序后的）

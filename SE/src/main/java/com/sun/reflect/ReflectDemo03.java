@@ -12,7 +12,7 @@ public class ReflectDemo03 {
         //获取类的所有方法
 		User  user  =  new  User();
 		Class clazz = user.getClass();
-//		Object object = clazz.newInstance();
+		Object object = clazz.newInstance();
 		//获取无参的方法
 //		Method method  = clazz.getMethod("study");
 //		//clazz.newInstance()通过class对象创建java对象。
