@@ -2,8 +2,9 @@ package com.sun.thread;
 
 public class RunableTest10 implements Runnable {
 
-	/*
+	/**
 	 * 给多线程执行的代码加锁，这样就保证了该代码只能单线程执行，实现了线程安全
+	 *
 	 */
 	private int tickets = 50;
 	private static Object obj = new Object();//锁的对象，可以是任意的对象

@@ -26,6 +26,7 @@ public class map {
 
 	//循环打印HashMap中的key和value
 	public static void keyAndValue(HashMap map){
+		Set  set = map.keySet();
 		for(Object key : map.keySet()){
 			System.out.println("key:"+key+","+"value:"+map.get(key).toString());
 		}

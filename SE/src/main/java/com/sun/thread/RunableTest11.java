@@ -22,11 +22,11 @@ public class RunableTest11 implements Runnable {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
-			   synchronized (RunableTest11.class) {
+//			   synchronized (RunableTest11.class) {
 				System.out.println(Thread.currentThread().getName()+"卖出第"
 						+(50-tickets+1)+"得票");
 				tickets--;
-			   }
+//			   }
 		    }
 		}else{
 			sale();
@@ -34,7 +34,7 @@ public class RunableTest11 implements Runnable {
 
 	}
 
-	private  static synchronized void sale() {
+	private   synchronized void sale() {
 		while(tickets>0){
 			try {
 				Thread.sleep(10);
@@ -50,18 +50,18 @@ public class RunableTest11 implements Runnable {
 	}
 	
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws InterruptedException {
 		// TODO Auto-generated method stub
 		RunableTest11 test11 = new RunableTest11();
 		Thread t1 = new Thread(test11,"t1");
 		Thread t2 = new Thread(test11,"t2");
 		t1.start();
-		try {
-			Thread.sleep(10);
-		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+//		try {
+//			Thread.sleep(10);
+//		} catch (InterruptedException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
 		flag=false;
 		t2.start();
 	}
