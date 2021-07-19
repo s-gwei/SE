@@ -3,7 +3,7 @@ package com.sun.algorithm;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.junit.Test;
+
 
 public class Runningsum {
 
@@ -71,7 +71,7 @@ public class Runningsum {
 	/**
 	 * 统计作战单位 int[] rating
 	 */
-	@Test
+
 	public void numTeams() {
 		int[] rating = { 2, 5, 3, 4, 1 };
 		int count = 0;

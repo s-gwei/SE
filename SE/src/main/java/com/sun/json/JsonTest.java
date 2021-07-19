@@ -4,9 +4,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
-import org.junit.Test;
-
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.serializer.SerializerFeature;
 import com.sun.pojo.User;
@@ -64,8 +61,6 @@ public class JsonTest {
 		System.out.println(json);
 		  
 	}
-	
-	@Test
 	public void jsonFour(){
 		//对象序列化
 		User user = new User();

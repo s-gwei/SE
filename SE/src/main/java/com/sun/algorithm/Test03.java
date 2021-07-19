@@ -1,6 +1,6 @@
 package com.sun.algorithm;
 
-import org.junit.Test;
+
 
 public class Test03 {
 	
@@ -14,7 +14,7 @@ public class Test03 {
 	 */
 	
 //	int n, int m
-    @Test
+
 	public void tset03(){
     	int n = 7;
     	int m = 35;

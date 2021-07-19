@@ -3,7 +3,7 @@ package com.sun.algorithm;
 import java.util.HashMap;
 import java.util.Map;
 
-import org.junit.Test;
+
 
 public class Test01 {
 
@@ -13,8 +13,6 @@ public class Test01 {
 	 * 我目前的处理是如果两个组人数相同选择右边的，这里需求没有说明，需要优化
 	 * 
 	 */
-
-	@Test
 	public void test01() {
 		// 初始化四个项目组人数
 		Map<String, Integer> map = new HashMap<String, Integer>();

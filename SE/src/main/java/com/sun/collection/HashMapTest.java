@@ -6,6 +6,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 public class HashMapTest {
 	  public static void main(String[] args) {
+	  	  HashMap map=new HashMap();
 	        HashMapThread thread0 = new HashMapThread();
 	        HashMapThread thread1 = new HashMapThread();
 	        HashMapThread thread2 = new HashMapThread();
@@ -21,7 +22,7 @@ public class HashMapTest {
 
 	class HashMapThread extends Thread {
 	    private static AtomicInteger ai = new AtomicInteger();
-	    private static Map<Integer, Integer> map = new HashMap<>();
+	    private static Map<Integer, Integer> map = new HashMap<Integer, Integer>();
 
 	    @Override
 	    public void run() {

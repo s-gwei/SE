@@ -1,6 +1,6 @@
 package com.sun.algorithm;
 
-import org.junit.Test;
+
 
 public class Test02 {
 	
@@ -10,7 +10,7 @@ public class Test02 {
 	 * 循环匹配，求取
 	 */
 	
-	@Test
+
 	public void test02(){
 		String test = "12345678abcdefgh";
 		StringBuffer stringBuffer = new StringBuffer(test);
@@ -39,60 +39,30 @@ public class Test02 {
 		}
 	}
 
-	private int number(String string) {
+	private int number(String str) {
 		// TODO Auto-generated method stub
 		int result = 0;
-		switch(string){
-		   case "a":
-		   case "j":
-		   case "s":
-			   result=1;
-			   break;
-		   case "b":
-		   case "k":
-		   case "t":
-			   result=2;
-			   break;
-		   case "c":
-		   case "l":
-		   case "u":
-			   result=3;
-			   break;
-		   case "d":
-		   case "m":
-		   case "v":
-			   result=4;
-			   break;
-		   case "e":
-		   case "n":
-		   case "w":
-			   result=5;
-			   break;
-		   case "f":
-		   case "o":
-		   case "x":
-			   result=6;
-			   break;
-		   case "g":
-		   case "p":
-		   case "y":
-			   result=7;
-			   break;
-		   case "h":
-		   case "q":
-		   case "z":
-			   result=8;
-			   break;
-		   case "i":
-		   case "r":
-			   result=9;
-			   break;
-			default:
-				break;
-				
+		if ("a".equals(str) || "j".equals(str) || "s".equals(str)) {
+			result = 1;
+		} else if ("b".equals(str) || "k".equals(str) || "t".equals(str)) {
+			result = 2;
+		} else if ("c".equals(str) || "l".equals(str) || "u".equals(str)) {
+			result = 3;
+		} else if ("d".equals(str) || "m".equals(str) || "v".equals(str)) {
+			result = 4;
+		} else if ("e".equals(str) || "n".equals(str) || "w".equals(str)) {
+			result = 5;
+		} else if ("f".equals(str) || "o".equals(str) || "x".equals(str)) {
+			result = 6;
+		} else if ("g".equals(str) || "p".equals(str) || "y".equals(str)) {
+			result = 7;
+		} else if ("h".equals(str) || "q".equals(str) || "z".equals(str)) {
+			result = 8;
+		} else if ("i".equals(str) || "r".equals(str)) {
+			result = 9;
 		}
 		if(result == 0){
-			result = Integer.parseInt(string);
+			result = Integer.parseInt(str);
 		}
 		return result;
 	}
